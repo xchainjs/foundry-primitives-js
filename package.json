@@ -1,5 +1,5 @@
 {
-  "name": "foundry-primitives",
+  "name": "foundry-primitives-xchainjs",
   "version": "0.2.1",
   "description": "JavaScript classes for Foundry primitives",
   "engines": {
