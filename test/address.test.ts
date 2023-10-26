@@ -53,7 +53,7 @@ describe("fromAccountId", () => {
                 version: 99
             });
             done.fail();
-        } catch (e) {
+        } catch (e: any) {
             expect(e.toString()).toContain("version");
             done();
         }
@@ -66,7 +66,7 @@ describe("fromAccountId", () => {
                 networkId: "x"
             });
             done.fail();
-        } catch (e) {
+        } catch (e: any) {
             expect(e.toString()).toContain("networkId");
             expect(e.toString()).toContain("x");
             done();
@@ -77,7 +77,7 @@ describe("fromAccountId", () => {
         try {
             Address.fromAccountId("xxx", { networkId: "tc" });
             done.fail();
-        } catch (e) {
+        } catch (e: any) {
             expect(e.toString()).toContain("accountId");
             expect(e.toString()).toContain("xxx");
             done();
@@ -106,7 +106,7 @@ describe("fromString", () => {
         try {
             Address.fromString(invalidChecksumAddress);
             done.fail();
-        } catch (e) {
+        } catch (e: any) {
             expect(e.toString()).toContain("checksum");
             done();
         }
@@ -138,7 +138,7 @@ describe("fromPublic", () => {
         try {
             Address.fromPublic(pubkey.slice(1), { networkId: "cc" });
             done.fail();
-        } catch (e) {
+        } catch (e: any) {
             expect(e.toString()).toContain("Invalid public key");
             done();
         }
