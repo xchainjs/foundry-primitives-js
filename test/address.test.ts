@@ -54,7 +54,8 @@ describe("fromAccountId", () => {
             });
             done.fail();
         } catch (e) {
-            expect(e.toString()).toContain("version");
+            const err = e as Error;
+            expect(err.toString()).toContain("version");
             done();
         }
     });
@@ -67,8 +68,9 @@ describe("fromAccountId", () => {
             });
             done.fail();
         } catch (e) {
-            expect(e.toString()).toContain("networkId");
-            expect(e.toString()).toContain("x");
+            const err = e as Error;
+            expect(err.toString()).toContain("networkId");
+            expect(err.toString()).toContain("x");
             done();
         }
     });
@@ -78,8 +80,9 @@ describe("fromAccountId", () => {
             Address.fromAccountId("xxx", { networkId: "tc" });
             done.fail();
         } catch (e) {
-            expect(e.toString()).toContain("accountId");
-            expect(e.toString()).toContain("xxx");
+            const err = e as Error;
+            expect(err.toString()).toContain("accountId");
+            expect(err.toString()).toContain("xxx");
             done();
         }
     });
@@ -107,7 +110,8 @@ describe("fromString", () => {
             Address.fromString(invalidChecksumAddress);
             done.fail();
         } catch (e) {
-            expect(e.toString()).toContain("checksum");
+            const err = e as Error;
+            expect(err.toString()).toContain("checksum");
             done();
         }
     });
@@ -139,7 +143,8 @@ describe("fromPublic", () => {
             Address.fromPublic(pubkey.slice(1), { networkId: "cc" });
             done.fail();
         } catch (e) {
-            expect(e.toString()).toContain("Invalid public key");
+            const err = e as Error;
+            expect(err.toString()).toContain("Invalid public key");
             done();
         }
     });
