@@ -53,8 +53,9 @@ describe("fromAccountId", () => {
                 version: 99
             });
             done.fail();
-        } catch (e: any) {
-            expect(e.toString()).toContain("version");
+        } catch (e) {
+            const err = e as Error;
+            expect(err.toString()).toContain("version");
             done();
         }
     });
@@ -66,9 +67,10 @@ describe("fromAccountId", () => {
                 networkId: "x"
             });
             done.fail();
-        } catch (e: any) {
-            expect(e.toString()).toContain("networkId");
-            expect(e.toString()).toContain("x");
+        } catch (e) {
+            const err = e as Error;
+            expect(err.toString()).toContain("networkId");
+            expect(err.toString()).toContain("x");
             done();
         }
     });
@@ -77,9 +79,10 @@ describe("fromAccountId", () => {
         try {
             Address.fromAccountId("xxx", { networkId: "tc" });
             done.fail();
-        } catch (e: any) {
-            expect(e.toString()).toContain("accountId");
-            expect(e.toString()).toContain("xxx");
+        } catch (e) {
+            const err = e as Error;
+            expect(err.toString()).toContain("accountId");
+            expect(err.toString()).toContain("xxx");
             done();
         }
     });
@@ -106,8 +109,9 @@ describe("fromString", () => {
         try {
             Address.fromString(invalidChecksumAddress);
             done.fail();
-        } catch (e: any) {
-            expect(e.toString()).toContain("checksum");
+        } catch (e) {
+            const err = e as Error;
+            expect(err.toString()).toContain("checksum");
             done();
         }
     });
@@ -138,8 +142,9 @@ describe("fromPublic", () => {
         try {
             Address.fromPublic(pubkey.slice(1), { networkId: "cc" });
             done.fail();
-        } catch (e: any) {
-            expect(e.toString()).toContain("Invalid public key");
+        } catch (e) {
+            const err = e as Error;
+            expect(err.toString()).toContain("Invalid public key");
             done();
         }
     });
